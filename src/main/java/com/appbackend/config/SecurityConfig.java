@@ -61,7 +61,7 @@ public class SecurityConfig {
          .csrf(csrf -> csrf.disable())  
          .cors(cors->cors.disable())
          .authorizeHttpRequests(request -> request
-             .requestMatchers("/login","/register").permitAll()  
+             .requestMatchers("/public/**").permitAll()  
              .requestMatchers("/citizen/**").hasAuthority("CITIZEN") 
              .requestMatchers("/officer/**").hasAuthority("OFFICER") 
              .requestMatchers("/admin/**").hasAuthority("ADMIN") 
