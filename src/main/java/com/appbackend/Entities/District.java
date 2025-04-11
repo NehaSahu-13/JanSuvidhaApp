@@ -24,9 +24,11 @@ public class District {
 	
 	private String abbreviation;
 	
+	@JsonIgnore
 	@OneToMany(cascade=CascadeType.ALL,mappedBy="district",orphanRemoval=true,fetch = FetchType.EAGER)
 	private List<Block>blocks;
 	
+	@JsonIgnore
 	@OneToMany(cascade=CascadeType.ALL,mappedBy="district",orphanRemoval=true,fetch = FetchType.EAGER)
 	private List<Panchayat>panchayat;
 	

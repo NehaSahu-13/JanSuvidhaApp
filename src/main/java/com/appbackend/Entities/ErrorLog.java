@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,11 +23,24 @@ public class ErrorLog {
 	private String error;
 	
 	private String error_Description;
+
+	@Column(columnDefinition = "TEXT")
+	private String errorDetail;
 	
 	@ManyToOne
 	private CitizenRegistration citizen;
 	
 	private Timestamp dateandTime;
+
+	
+
+	public String getErrorDetail() {
+		return errorDetail;
+	}
+
+	public void setErrorDetail(String errorDetail) {
+		this.errorDetail = errorDetail;
+	}
 
 	public long getID() {
 		return ID;

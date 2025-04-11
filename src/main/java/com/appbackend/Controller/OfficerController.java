@@ -1,5 +1,6 @@
 package com.appbackend.Controller;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,6 +31,7 @@ import com.appbackend.Entities.Notice;
 import com.appbackend.Entities.Office;
 import com.appbackend.Entities.OfficerRegistration;
 import com.appbackend.Entities.Scheme;
+import com.appbackend.Service.ComplaintAndSuggestionService;
 import com.appbackend.Service.NoticeService;
 import com.appbackend.Service.OfficerService;
 import com.appbackend.Service.SchemeService;
@@ -51,6 +53,9 @@ public class OfficerController {
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+
+	@Autowired
+	private ComplaintAndSuggestionService complaintService;	
 	
 	
 	@GetMapping("/officer/{id}")
@@ -145,8 +150,8 @@ public class OfficerController {
 	@GetMapping("/officer/getAllNotice")
     public ResponseEntity<?> getAllNotice(){
 		
-		List<Notice> notices=noticeService.getAllNotices();
-		
+		List<Notice> notices=noticeService.getAllNoticeForOfficer();
+		Collections.reverse(notices);
 		return ResponseEntity.ok(notices);
 		
 	}
@@ -155,7 +160,7 @@ public class OfficerController {
     public ResponseEntity<?> getAllNoticeUploadedByOfficer(@PathVariable("id") long id){
 		
 		List<Notice> notices=noticeService.getAllNotices();
-		
+		Collections.reverse(notices);
 		return ResponseEntity.ok(notices);
 		
 	}
@@ -205,7 +210,7 @@ public class OfficerController {
 	public ResponseEntity<?> getAllScheme(){
 		
 		List<Scheme> schemes=schemeService.getAllSchemes();
-		
+		Collections.reverse(schemes);
 		return ResponseEntity.ok(schemes);
 		
 	}
@@ -215,10 +220,22 @@ public class OfficerController {
 	public ResponseEntity<?> getAllSchemeByDepartment(@PathVariable("id") long id){
 		
 		List<Scheme> schemes=schemeService.getAllSchemesByDepartment(id);
-		
+		Collections.reverse(schemes);
 		return ResponseEntity.ok(schemes);
 		
 	}
+
+
+	@PostMapping("/officer/resolveComplaint/{complaintId}")
+	public ResponseEntity<?> resolveComplaint(@PathVariable("complaintId") long complaintId,@RequestPart("solution") String solution,
+            @RequestPart(value = "file", required = false) MultipartFile file){
+	
+		complaintService.solution(complaintId, solution, file);
+		
+		return ResponseEntity.ok("Complaint/Suggestion resolved successfully !!");
+		
+	}
+	
 	
 	
 }

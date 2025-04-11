@@ -81,17 +81,15 @@ public class ComplaintAndSuggestionServiceImpl implements ComplaintAndSuggestion
 		return objs;
 	}
 
+	
 	@Override
 	public ComplaintAndSuggestion Assignment(long complaintAndsuggestionID,long officeID) {
 		
 		ComplaintAndSuggestion obj=complaintAndSuggestionRepository.findById(complaintAndsuggestionID).get();
 		Office office=officeRepository.findById(officeID).get();
-		obj.setDisposal_DateAndTime(Timestamp.from(Instant.now()));
+		obj.setStatus("Assigned");
 		obj.setOffice(office);
 		office.getComplaintAndSuggestions().add(obj);
-		obj.setStatus("Assigned");
-		int disposalID=Integer.parseInt(String.valueOf(office.getOffice_ID())+String.valueOf(complaintAndsuggestionID));
-		obj.setDisposal_ID(disposalID);
 	
 		officeRepository.save(office);
 		
@@ -103,7 +101,11 @@ public class ComplaintAndSuggestionServiceImpl implements ComplaintAndSuggestion
 	public ComplaintAndSuggestion solution(long id,String solution, MultipartFile file) {
 		
 		ComplaintAndSuggestion obj=complaintAndSuggestionRepository.findById(id).get();
+		obj.setDisposal_DateAndTime(Timestamp.from(Instant.now()));
 		obj.setSolution(solution);
+		int disposalID=Integer.parseInt(String.valueOf(obj.getOffice().getOffice_ID())+String.valueOf(id));
+		obj.setDisposal_ID(disposalID);
+		obj.setStatus("Resolved");
 		
 		try {
 			if(file!=null) {

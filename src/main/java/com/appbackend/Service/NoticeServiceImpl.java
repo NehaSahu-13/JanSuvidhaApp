@@ -130,4 +130,16 @@ public class NoticeServiceImpl implements NoticeService{
 		
 	}
 
+	@Override
+	public List<Notice> getAllNoticeForCitizen() {
+		List<Notice> notices=noticeRepository.findByNotice_Visibility(1,3);
+		return notices;
+	}
+
+	@Override
+	public List<Notice> getAllNoticeForOfficer() {
+		List<Notice> notices=noticeRepository.findByNotice_Visibility(2,3);
+		return notices;
+	}
+
 }

@@ -1,6 +1,7 @@
 package com.appbackend.Controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,11 +20,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.appbackend.DTO.OfficeDTO;
 import com.appbackend.DTO.OfficerDTO;
+import com.appbackend.Entities.ActivityLog;
+import com.appbackend.Entities.ComplaintAndSuggestion;
 import com.appbackend.Entities.Department;
+import com.appbackend.Entities.ErrorLog;
 import com.appbackend.Entities.Office;
 import com.appbackend.Response.DepartmentResponse;
+import com.appbackend.Service.ActivityService;
+import com.appbackend.Service.ComplaintAndSuggestionService;
 import com.appbackend.Service.DepartmentServiceImpl;
-import com.appbackend.Service.NoticeService;
+import com.appbackend.Service.ErrorService;
 import com.appbackend.Service.OfficeService;
 import com.appbackend.Service.OfficerService;
 
@@ -39,9 +45,18 @@ public class AdminController {
 	@Autowired
 	private OfficeService officeService;
 	
+	@Autowired
+	private ComplaintAndSuggestionService complaintService;	
 	
 	@Autowired
 	private OfficerService officerService;
+
+	@Autowired
+	private ActivityService activityService;
+
+	@Autowired
+	private ErrorService errorService;
+
 	
 	@PostMapping("/addOfficer")
 	public ResponseEntity<?> addOfficer(@Valid @RequestBody OfficerDTO officerDto,BindingResult result) {
@@ -194,6 +209,71 @@ public class AdminController {
 			return ResponseEntity.ok(officeRes);
 			
 		}
+
+
+		 @GetMapping("/getAllComplaintAndSuggestion")
+	   public ResponseEntity<List<ComplaintAndSuggestion>> getAllComplaintAndSuggestion(){
+		   
+		   List<ComplaintAndSuggestion> objs= complaintService.getAllComplaintAndSuggestion();
+		   Collections.reverse(objs);
+		   return ResponseEntity.ok(objs);
+		   
+	   }
+	
+	   @PostMapping("/complaintAssignment/{complaintId}")
+	   public ResponseEntity<?> complaintAssignment(@PathVariable("complaintId") long complaintId,@RequestParam("officeId") long officeId){
+		   
+		    complaintService.Assignment(complaintId, officeId);
+		    
+		    return ResponseEntity.ok("Complaint/Suggestion assigned successfully !!");
+		   
+	   }
+
+
+	    @GetMapping("/getActivity/{id}")
+	   public ResponseEntity<?> getActivity(@PathVariable("id") long id){
+		   
+		  ActivityLog activity= activityService.getActivityById(id);
+		   
+		  return ResponseEntity.ok(activity);
+		   
+	   }
+	   
+	   @GetMapping("/getAllActivityOfUser/{id}")
+	   public ResponseEntity<?> getAllActivityOfUser(@PathVariable("id") long id){
+		   
+		  List<ActivityLog> activities= activityService.getAllActvitiesOfUser(id);
+		  Collections.reverse(activities);
+		  return ResponseEntity.ok(activities);
+		   
+	   }
+	   
+	   @GetMapping("/getAllActivity")
+	   public ResponseEntity<?> getAllActivity(){
+		   
+		  List<ActivityLog> activities= activityService.getAllActivites();
+		  Collections.reverse(activities);
+		  return ResponseEntity.ok(activities);
+		   
+	   }
+	   
+	    @GetMapping("/getError/{id}")
+	   public ResponseEntity<ErrorLog> getErrorById(@PathVariable("id") long id){
+		   
+		   ErrorLog error= errorService.getErrorById(id);
+		   
+		   return ResponseEntity.ok(error);
+		   
+	   }
+	   
+	   @GetMapping("/getAllError")
+	   public ResponseEntity<List<ErrorLog>> getAllError(){
+		   
+		   List<ErrorLog>errors = errorService.getAllError();
+		   
+		   return ResponseEntity.ok(errors);
+		   
+	   }
 	
 	   
 	  

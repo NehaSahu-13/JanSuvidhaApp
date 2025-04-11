@@ -20,6 +20,10 @@ public interface NoticeService {
 	public boolean deleteNotice(long id);
 	
 	public Notice updateNotice(NoticeDTO noticeDto,MultipartFile file);
+
+	public List<Notice> getAllNoticeForCitizen();
+	
+	public List<Notice> getAllNoticeForOfficer();
 	
 	
 }

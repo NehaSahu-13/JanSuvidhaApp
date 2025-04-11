@@ -27,6 +27,7 @@ public class Block {
 	
 	private String block_Name_Hindi;
 	
+	@JsonIgnore
 	@OneToMany(cascade=CascadeType.ALL,mappedBy="block",orphanRemoval=true,fetch = FetchType.EAGER)
 	private List<Panchayat>panchayat;
 

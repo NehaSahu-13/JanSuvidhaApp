@@ -1,5 +1,6 @@
 package com.appbackend.Controller;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,10 +32,12 @@ import com.appbackend.DTO.ComplaintAndSuggestionDTO;
 import com.appbackend.Entities.CitizenRegistration;
 import com.appbackend.Entities.Notice;
 import com.appbackend.Entities.Scheme;
+import com.appbackend.Service.ActivityService;
 import com.appbackend.Service.CitizenService;
 import com.appbackend.Service.CitizenServiceImpl;
 import com.appbackend.Service.ComplaintAndSuggestionService;
 import com.appbackend.Service.CustomUserDetailsService;
+import com.appbackend.Service.ErrorService;
 import com.appbackend.Service.NoticeService;
 import com.appbackend.Service.SchemeService;
 
@@ -57,6 +60,12 @@ public class CitizenController {
 	
 	@Autowired
 	private NoticeService noticeService;
+
+	@Autowired
+	private ActivityService activityService;
+
+	@Autowired
+	private ErrorService errorService;
 	
 	  
 
@@ -162,8 +171,8 @@ public class CitizenController {
 		@GetMapping("/citizen/getAllNotice")
 	    public ResponseEntity<?> getAllNotice(){
 			
-			List<Notice> notices=noticeService.getAllNotices();
-			
+			List<Notice> notices=noticeService.getAllNoticeForCitizen();
+			Collections.reverse(notices);
 			return ResponseEntity.ok(notices);
 			
 		}
@@ -181,8 +190,26 @@ public class CitizenController {
 		public ResponseEntity<?> getAllScheme(){
 			
 			List<Scheme> schemes=schemeService.getAllSchemes();
-			
+			Collections.reverse(schemes);
 			return ResponseEntity.ok(schemes);
+			
+		}
+
+		@PostMapping("/citizen/addActivity")
+		public ResponseEntity<?> addActivity(@RequestParam("user_ID") long user_ID,@RequestParam("pageName") String pageName,@RequestParam("activity") String activity,@RequestParam("data") String data){
+			
+			activityService.addActivity(user_ID, pageName, activity, data);
+			
+			return ResponseEntity.ok("Actvity added successfully !!");
+			
+		}
+
+		@PostMapping("/addError/{id}")
+		public ResponseEntity<?> addError(@PathVariable("id") long id,@RequestParam("error") String error,@RequestParam("pageName") String pageName,@RequestParam("error_Description") String error_Description){
+			
+			errorService.addError(id, error, pageName, error_Description);
+			
+			return ResponseEntity.ok("Error added successfully !!");
 			
 		}
 	 
