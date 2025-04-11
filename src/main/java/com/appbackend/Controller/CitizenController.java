@@ -69,7 +69,7 @@ public class CitizenController {
 	
 	  
 
-	@PostMapping("/register")
+	@PostMapping("/public/register")
 	public ResponseEntity<?> addCitizen(@Valid @RequestBody CitizenDTO citizen,BindingResult result) {
 		
 		 if (result.hasErrors()) {
