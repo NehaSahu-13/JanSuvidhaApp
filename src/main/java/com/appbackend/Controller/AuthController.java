@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,6 +28,7 @@ import com.appbackend.Service.CustomUserDetailsService;
 import com.appbackend.Service.CustomUserPrincipal;
 import com.appbackend.Util.JwtUtil;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/public")
 public class AuthController {
