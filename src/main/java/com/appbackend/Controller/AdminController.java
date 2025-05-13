@@ -79,8 +79,8 @@ public class AdminController {
 	
 
 	@PostMapping("/department")
-     public ResponseEntity<?> addDepartment(@RequestParam String departmentName_Eng, 
-    		    @RequestParam String department_Hindi){
+     public ResponseEntity<?> addDepartment(@RequestParam("departmentName_Eng") String departmentName_Eng, 
+    		    @RequestParam("department_Hindi") String department_Hindi){
     	 
 		Department department= departmentService.addDepartment(departmentName_Eng, department_Hindi);
 		
