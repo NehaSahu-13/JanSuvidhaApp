@@ -36,9 +36,10 @@ import com.appbackend.Service.OfficerService;
 
 import jakarta.validation.Valid;
 
-@CrossOrigin(origins = "*")
+
 @RestController
 @RequestMapping("/admin")
+@CrossOrigin(origins = "*")
 public class AdminController {
 
 	@Autowired

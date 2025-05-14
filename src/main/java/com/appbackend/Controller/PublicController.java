@@ -18,9 +18,10 @@ import com.appbackend.Repository.BlockRepository;
 import com.appbackend.Repository.DistrictRepository;
 import com.appbackend.Repository.NNNRepository;
 
-@CrossOrigin(origins = "*")
+
 @RestController
 @RequestMapping("/public")
+@CrossOrigin(origins = "*")
 public class PublicController {
 	
 

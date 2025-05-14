@@ -28,9 +28,10 @@ import com.appbackend.Service.CustomUserDetailsService;
 import com.appbackend.Service.CustomUserPrincipal;
 import com.appbackend.Util.JwtUtil;
 
-@CrossOrigin(origins = "*")
+
 @RestController
 @RequestMapping("/public")
+@CrossOrigin(origins = "*")
 public class AuthController {
 	
     @Autowired
