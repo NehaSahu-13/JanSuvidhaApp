@@ -54,7 +54,7 @@ public class CustomUserDetailsService implements UserDetailsService {
                        Collections.singleton(new SimpleGrantedAuthority("ADMIN")),
                        "ADMIN"
                );
-  	       
+  	       return userDetails;
   	    }
 
    
