@@ -84,6 +84,7 @@ public class SecurityConfig {
         provider.setUserDetailsService(userDetailsService);
         provider.setPasswordEncoder(new BCryptPasswordEncoder());
         return provider;
+        
     }
 }
 

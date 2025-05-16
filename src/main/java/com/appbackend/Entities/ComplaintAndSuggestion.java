@@ -18,7 +18,7 @@ import jakarta.persistence.ManyToOne;
 public class ComplaintAndSuggestion {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long ID;
 	
 	private int type;

@@ -47,8 +47,8 @@ public class CustomUserDetailsService implements UserDetailsService {
     	 UserDetails userDetails = null;
     	
     	   if (userDetails == null && id==1234567890L) {
-    		//    String adminPassword = new BCryptPasswordEncoder().encode("neha@1234");
-            String adminPassword ="$2a$10$9tLPXNFHktja4R/ivfzzB.mIuUMRp9gavgCsZz6T8SDAdtLBSt6Oe";
+    		   String adminPassword = new BCryptPasswordEncoder().encode("neha@1234");
+               System.out.println("custom "+adminPassword);
                userDetails = new CustomUserPrincipal(
             		   1234567890L,
                        adminPassword,

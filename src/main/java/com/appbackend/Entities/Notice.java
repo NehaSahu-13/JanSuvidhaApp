@@ -21,7 +21,7 @@ public class Notice {
 	private Office office;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long ID;
 	
 	private String notice_Title;

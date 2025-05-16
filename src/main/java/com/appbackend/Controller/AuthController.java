@@ -148,7 +148,7 @@ public class AuthController {
 
             // Generate JWT token
             String token = jwtUtil.generateToken(user.getId(), user.getRole());
-
+            
             // Return token and role
             return ResponseEntity.ok(new AuthResponse(token, user.getRole()));
         } catch (Exception e) {

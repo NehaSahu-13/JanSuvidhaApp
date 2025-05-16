@@ -18,7 +18,7 @@ public class Scheme {
 	private int scheme_Sponsor;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long scheme_ID;
 	
 	private String scheme_Title;

@@ -14,7 +14,7 @@ import jakarta.persistence.OneToMany;
 public class Department {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long department_ID;
 	
 	private String department_Name_Eng;

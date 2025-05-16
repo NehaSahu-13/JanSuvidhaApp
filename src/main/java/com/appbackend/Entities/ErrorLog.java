@@ -15,7 +15,7 @@ import jakarta.persistence.ManyToOne;
 public class ErrorLog {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long ID;
 	
 	private String page_Name;
