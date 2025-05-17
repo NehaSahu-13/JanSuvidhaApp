@@ -10,6 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.appbackend.DTO.OfficerDTO;
+import com.appbackend.Entities.Admin;
 import com.appbackend.Entities.CitizenRegistration;
 import com.appbackend.Entities.Department;
 import com.appbackend.Entities.Office;
@@ -37,9 +38,9 @@ public class OfficerServiceImpl implements OfficerService{
 	@Override
 	public OfficerRegistration addOfficer(OfficerDTO officerDto) {
 		
-		
+		Admin admin=new Admin();
 		OfficerRegistration officer=new OfficerRegistration();
-		officer.setCreated_By(officerDto.getCreated_By());
+		officer.setCreated_By(admin.getUsername());
 		officer.setCreation_Date(new Date());
 		Department department=departmentRepository.findById(officerDto.getDepartment_ID()).get();
 		officer.setDepartment(department);

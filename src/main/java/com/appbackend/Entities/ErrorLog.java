@@ -22,7 +22,6 @@ public class ErrorLog {
 	
 	private String error;
 	
-	private String error_Description;
 
 	@Column(columnDefinition = "TEXT")
 	private String errorDetail;
@@ -66,13 +65,9 @@ public class ErrorLog {
 		this.error = error;
 	}
 
-	public String getError_Description() {
-		return error_Description;
-	}
+	
 
-	public void setError_Description(String error_Description) {
-		this.error_Description = error_Description;
-	}
+	
 
 	public CitizenRegistration getCitizen() {
 		return citizen;
@@ -92,8 +87,7 @@ public class ErrorLog {
 
 	@Override
 	public String toString() {
-		return "ErrorLog [ID=" + ID + ", page_Name=" + page_Name + ", error=" + error + ", error_Description="
-				+ error_Description + ", citizen=" + citizen + ", dateandTime=" + dateandTime + "]";
+		return "ErrorLog [ID=" + ID + ", page_Name=" + page_Name + ", error=" + error + ", citizen=" + citizen + ", dateandTime=" + dateandTime + "]";
 	}
 
 	/**
@@ -104,13 +98,12 @@ public class ErrorLog {
 	 * @param citizen
 	 * @param dateandTime
 	 */
-	public ErrorLog(long iD, String page_Name, String error, String error_Description, CitizenRegistration citizen,
+	public ErrorLog(long iD, String page_Name, String error, CitizenRegistration citizen,
 			Timestamp dateandTime) {
 		super();
 		ID = iD;
 		this.page_Name = page_Name;
 		this.error = error;
-		this.error_Description = error_Description;
 		this.citizen = citizen;
 		this.dateandTime = dateandTime;
 	}

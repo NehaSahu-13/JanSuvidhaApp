@@ -48,7 +48,6 @@ public class CustomUserDetailsService implements UserDetailsService {
     	
     	   if (userDetails == null && id==1234567890L) {
     		   String adminPassword = new BCryptPasswordEncoder().encode("neha@1234");
-               System.out.println("custom "+adminPassword);
                userDetails = new CustomUserPrincipal(
             		   1234567890L,
                        adminPassword,

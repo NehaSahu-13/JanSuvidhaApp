@@ -28,9 +28,10 @@ public class ErrorServiceImpl implements ErrorService{
 		errorlog.setCitizen(citizen);
 		errorlog.setDateandTime(Timestamp.from(Instant.now()));
 		errorlog.setError(error);
-		errorlog.setError_Description(error_Description);
+		errorlog.setErrorDetail(error_Description);
 		errorlog.setPage_Name(pageName);
 		citizen.getErrors().add(errorlog);
+		errorRepository.save(errorlog);
 		citizenRepository.save(citizen);
 		return errorlog;
 		
