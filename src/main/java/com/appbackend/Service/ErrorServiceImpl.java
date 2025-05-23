@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.appbackend.Entities.CitizenRegistration;
-import com.appbackend.Entities.ErrorLog;
+import com.appbackend.Entities.ErrorLog;	
 import com.appbackend.Repository.CitizenRepository;
 import com.appbackend.Repository.ErrorLogRepository;
 
