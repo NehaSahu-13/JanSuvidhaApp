@@ -59,12 +59,12 @@ public class SecurityConfig {
     	
     	 http
          .csrf(csrf -> csrf.disable())  
-         .cors(cors->cors.disable())
+        //  .cors(cors->cors.disable())
          .authorizeHttpRequests(request -> request
-             .requestMatchers("/public/**").permitAll()  
              .requestMatchers("/citizen/**").hasAuthority("CITIZEN") 
              .requestMatchers("/officer/**").hasAuthority("OFFICER") 
              .requestMatchers("/admin/**").hasAuthority("ADMIN") 
+             .requestMatchers("/**").permitAll()  
              .anyRequest().authenticated()  
          )
          

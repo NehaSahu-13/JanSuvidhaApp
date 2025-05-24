@@ -17,8 +17,9 @@ import com.appbackend.Service.ErrorService;
 
 import jakarta.servlet.http.HttpServletRequest;
 
-@CrossOrigin(origins = "*")
+
 @RestControllerAdvice
+@CrossOrigin(origins = "*")
 public class GlobalExceptionHandler {
 
     @Autowired

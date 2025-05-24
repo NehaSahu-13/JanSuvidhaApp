@@ -39,8 +39,9 @@ import com.appbackend.Service.SchemeService;
 
 import jakarta.validation.Valid;
 
-@CrossOrigin(origins = "*")
+
 @RestController
+@CrossOrigin(origins = "*")
 public class OfficerController {
 	
 	
