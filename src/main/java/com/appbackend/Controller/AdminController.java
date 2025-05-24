@@ -40,7 +40,7 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/admin")
-@CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.OPTIONS})
+@CrossOrigin(origins = "http://127.0.0.1:5500")
 public class AdminController {
 
 	@Autowired
