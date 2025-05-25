@@ -41,7 +41,7 @@ import jakarta.validation.Valid;
 
 
 @RestController
-@CrossOrigin(origins = "*")
+// @CrossOrigin(origins = "*")
 public class OfficerController {
 	
 	

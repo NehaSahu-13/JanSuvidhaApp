@@ -31,7 +31,7 @@ import com.appbackend.Util.JwtUtil;
 
 @RestController
 @RequestMapping("/public")
-@CrossOrigin(origins = "*")
+// @CrossOrigin(origins = "*")
 public class AuthController {
 	
     @Autowired

@@ -21,7 +21,7 @@ import com.appbackend.Repository.NNNRepository;
 
 @RestController
 @RequestMapping("/public")
-@CrossOrigin(origins = "*")
+// @CrossOrigin(origins = "*")
 public class PublicController {
 	
 

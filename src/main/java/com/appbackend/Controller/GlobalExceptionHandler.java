@@ -19,7 +19,7 @@ import jakarta.servlet.http.HttpServletRequest;
 
 
 @RestControllerAdvice
-@CrossOrigin(origins = "*")
+// @CrossOrigin(origins = "*")
 public class GlobalExceptionHandler {
 
     @Autowired
