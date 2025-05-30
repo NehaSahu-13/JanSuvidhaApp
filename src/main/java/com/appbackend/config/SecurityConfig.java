@@ -81,10 +81,10 @@ public class SecurityConfig {
         .csrf(csrf -> csrf.disable())
         .cors(cors -> cors.configurationSource(request -> {
             CorsConfiguration configuration = new CorsConfiguration();
-            configuration.setAllowedOrigins(java.util.List.of("http://127.0.0.1:5500")); 
+            configuration.setAllowedOrigins(java.util.List.of("*")); 
             configuration.setAllowedMethods(java.util.List.of("POST", "GET", "OPTIONS", "DELETE", "PUT"));
             configuration.setAllowedHeaders(java.util.List.of("*"));
-            configuration.setAllowCredentials(true); 
+            configuration.setAllowCredentials(false); 
             return configuration;
         }))
         .authorizeHttpRequests(request -> request
