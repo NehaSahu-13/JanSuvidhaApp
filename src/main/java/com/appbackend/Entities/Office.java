@@ -19,14 +19,14 @@ import jakarta.validation.constraints.Size;
 public class Office {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long office_ID;
 		
 	private String office_Type;
 	
-	private String Office_Name_Eng;
+	private String office_Name_Eng;
 	
-	private String Office_Name_Hindi;
+	private String office_Name_Hindi;
 	
 	private String office_Address;
 	
@@ -35,7 +35,6 @@ public class Office {
 	private String office_Email;
 	
 	@ManyToOne
-	@JsonIgnore
 	private Department department;
 	
 	@OneToMany(cascade=CascadeType.ALL,mappedBy="office",orphanRemoval=true,fetch = FetchType.EAGER)
@@ -64,19 +63,19 @@ public class Office {
 	}
 
 	public String getOffice_Name_Eng() {
-		return Office_Name_Eng;
+		return office_Name_Eng;
 	}
 
 	public void setOffice_Name_Eng(String office_Name_Eng) {
-		Office_Name_Eng = office_Name_Eng;
+		this.office_Name_Eng = office_Name_Eng;
 	}
 
 	public String getOffice_Name_Hindi() {
-		return Office_Name_Hindi;
+		return office_Name_Hindi;
 	}
 
 	public void setOffice_Name_Hindi(String office_Name_Hindi) {
-		Office_Name_Hindi = office_Name_Hindi;
+		this.office_Name_Hindi = office_Name_Hindi;
 	}
 
 	public String getOffice_Address() {
@@ -139,7 +138,7 @@ public class Office {
 	@Override
 	public String toString() {
 		return "Office [office_ID=" + office_ID + ", office_Type=" + office_Type + ", Office_Name_Eng="
-				+ Office_Name_Eng + ", Office_Name_Hindi=" + Office_Name_Hindi + ", office_Address=" + office_Address
+				+ office_Name_Eng + ", Office_Name_Hindi=" + office_Name_Hindi + ", office_Address=" + office_Address
 				+ ", office_Phone=" + office_Phone + ", office_Email=" + office_Email + ", department=" + department
 				+ ", officers=" + officers + ", notices=" + notices + ", complaintAndSuggestions="
 				+ complaintAndSuggestions + "]";
@@ -166,8 +165,8 @@ public class Office {
 		super();
 		this.office_ID = office_ID;
 		this.office_Type = office_Type;
-		Office_Name_Eng = office_Name_Eng;
-		Office_Name_Hindi = office_Name_Hindi;
+		this.office_Name_Eng = office_Name_Eng;
+		this.office_Name_Hindi = office_Name_Hindi;
 		this.office_Address = office_Address;
 		this.office_Phone = office_Phone;
 		this.office_Email = office_Email;
