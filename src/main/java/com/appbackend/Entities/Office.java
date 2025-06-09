@@ -35,6 +35,7 @@ public class Office {
 	private String office_Email;
 	
 	@ManyToOne
+	@JsonIgnore
 	private Department department;
 	
 	@OneToMany(cascade=CascadeType.ALL,mappedBy="office",orphanRemoval=true,fetch = FetchType.EAGER)
