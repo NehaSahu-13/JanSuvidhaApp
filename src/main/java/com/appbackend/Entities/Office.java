@@ -19,7 +19,7 @@ import jakarta.validation.constraints.Size;
 public class Office {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long office_ID;
 		
 	private String office_Type;
