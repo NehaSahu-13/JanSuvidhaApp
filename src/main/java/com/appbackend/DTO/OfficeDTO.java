@@ -10,9 +10,9 @@ public class OfficeDTO {
 	
 	private String office_Type;
 	
-	private String Office_Name_Eng;
+	private String office_Name_Eng;
 	
-	private String Office_Name_Hindi;
+	private String office_Name_Hindi;
 	
 	private String office_Address;
 	
@@ -41,19 +41,19 @@ public class OfficeDTO {
 	}
 
 	public String getOffice_Name_Eng() {
-		return Office_Name_Eng;
+		return office_Name_Eng;
 	}
 
 	public void setOffice_Name_Eng(String office_Name_Eng) {
-		Office_Name_Eng = office_Name_Eng;
+		this.office_Name_Eng = office_Name_Eng;
 	}
 
 	public String getOffice_Name_Hindi() {
-		return Office_Name_Hindi;
+		return office_Name_Hindi;
 	}
 
 	public void setOffice_Name_Hindi(String office_Name_Hindi) {
-		Office_Name_Hindi = office_Name_Hindi;
+		this.office_Name_Hindi = office_Name_Hindi;
 	}
 
 	public String getOffice_Address() {
@@ -91,7 +91,7 @@ public class OfficeDTO {
 	@Override
 	public String toString() {
 		return "OfficeDTO [office_ID=" + office_ID + ", office_Type=" + office_Type + ", Office_Name_Eng="
-				+ Office_Name_Eng + ", Office_Name_Hindi=" + Office_Name_Hindi + ", office_Address=" + office_Address
+				+ office_Name_Eng + ", Office_Name_Hindi=" + office_Name_Hindi + ", office_Address=" + office_Address
 				+ ", office_Phone=" + office_Phone + ", office_Email=" + office_Email + ", department_ID="
 				+ department_ID + "]";
 	}
@@ -113,8 +113,8 @@ public class OfficeDTO {
 		super();
 		this.office_ID = office_ID;
 		this.office_Type = office_Type;
-		Office_Name_Eng = office_Name_Eng;
-		Office_Name_Hindi = office_Name_Hindi;
+		this.office_Name_Eng = office_Name_Eng;
+		this.office_Name_Hindi = office_Name_Hindi;
 		this.office_Address = office_Address;
 		this.office_Phone = office_Phone;
 		this.office_Email = office_Email;
