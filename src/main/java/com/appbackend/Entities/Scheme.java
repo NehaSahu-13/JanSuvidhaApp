@@ -13,6 +13,7 @@ import jakarta.persistence.ManyToOne;
 public class Scheme {
 
 	@ManyToOne
+	@JsonIgnore
 	private Department department;
 	
 	private int scheme_Sponsor;

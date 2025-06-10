@@ -1,6 +1,7 @@
 package com.appbackend.Service;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
@@ -113,6 +114,28 @@ public class OfficerServiceImpl implements OfficerService{
         officer.setPassword(bCryptPasswordEncoder.encode(newPassword));
         officerRepository.save(officer);
 		
+	}
+
+	
+	@Override
+	public OfficerDTO getOfficerResp(OfficerRegistration officer) {
+		OfficerDTO officerResp=new OfficerDTO();
+		officerResp.setCreation_Date(officer.getCreation_Date());
+		officerResp.setCreated_By(officer.getCreated_By());
+		officerResp.setDepartment_ID(officer.getDepartment().getDepartment_ID());
+		officerResp.setEmail(officer.getEmail());
+		officerResp.setOffice_ID(officer.getOfficer_ID());
+		officerResp.setOfficer_Designation(officer.getOfficer_Designation());
+		officerResp.setOfficer_ID(officer.getOfficer_ID());
+		officerResp.setOfficer_Name(officer.getOfficer_Name());
+		officerResp.setOfficer_PhoneNumber(officer.getOfficer_PhoneNumber());
+		return officerResp;
+	}
+
+	@Override
+	public List<OfficerRegistration> getAllOfficers() {
+		List<OfficerRegistration>officers=officerRepository.findAll();
+		return officers;
 	}
 
 }

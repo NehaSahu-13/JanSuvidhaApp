@@ -24,6 +24,7 @@ public class ComplaintAndSuggestion {
 	private int type;
 	
 	@ManyToOne
+	@JsonIgnore
 	private CitizenRegistration citizen;
 	
 	private String application_Type;
@@ -35,6 +36,7 @@ public class ComplaintAndSuggestion {
 	private Date lodge_Date;
 	
 	@ManyToOne
+	@JsonIgnore
 	private Office office;
 	
 	private long disposal_ID;

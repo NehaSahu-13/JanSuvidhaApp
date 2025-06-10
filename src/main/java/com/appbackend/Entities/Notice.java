@@ -15,9 +15,11 @@ import jakarta.persistence.ManyToOne;
 public class Notice {
 
 	@ManyToOne
+	@JsonIgnore
 	private Department department;
 	
 	@ManyToOne
+	@JsonIgnore
 	private Office office;
 	
 	@Id
@@ -39,6 +41,7 @@ public class Notice {
 	private int notice_Visibility;
 	
 	@ManyToOne
+	@JsonIgnore
 	private OfficerRegistration officer;
 
 	public Department getDepartment() {

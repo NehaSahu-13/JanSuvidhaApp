@@ -1,5 +1,7 @@
 package com.appbackend.Service;
 
+import java.util.List;
+
 import com.appbackend.DTO.OfficerDTO;
 import com.appbackend.Entities.OfficerRegistration;
 
@@ -14,5 +16,9 @@ public interface OfficerService {
 	public OfficerRegistration updateOfficer(OfficerDTO officerDto);
 	
 	public void changePassword(long id,String newPassword);
+
+	public List<OfficerRegistration> getAllOfficers();
+	
+	public OfficerDTO getOfficerResp(OfficerRegistration officer);
 	
 }

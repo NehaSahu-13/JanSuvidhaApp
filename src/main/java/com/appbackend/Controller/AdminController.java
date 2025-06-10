@@ -27,6 +27,7 @@ import com.appbackend.Entities.ComplaintAndSuggestion;
 import com.appbackend.Entities.Department;
 import com.appbackend.Entities.ErrorLog;
 import com.appbackend.Entities.Office;
+import com.appbackend.Entities.OfficerRegistration;
 import com.appbackend.Response.DepartmentResponse;
 import com.appbackend.Service.ActivityService;
 import com.appbackend.Service.ComplaintAndSuggestionService;
@@ -77,6 +78,22 @@ public class AdminController {
 		    
 		    return ResponseEntity.ok(officerService.addOfficer(officerDto));
 			    
+	}
+
+
+	@GetMapping("/officer")
+	public ResponseEntity<List<OfficerDTO>> getAllOfficer(){
+		
+		List<OfficerRegistration>officers= officerService.getAllOfficers();
+		
+		List<OfficerDTO>officerResp = new ArrayList<>();
+		
+		for(OfficerRegistration officer:officers) {
+			officerResp.add(officerService.getOfficerResp(officer));
+		}
+		
+		return ResponseEntity.ok(officerResp);
+		
 	}
 	
 

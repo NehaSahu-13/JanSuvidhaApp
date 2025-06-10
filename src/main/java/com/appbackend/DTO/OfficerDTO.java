@@ -1,5 +1,7 @@
 package com.appbackend.DTO;
 
+import java.util.Date;
+
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
@@ -26,8 +28,38 @@ public class OfficerDTO {
 	
 	private String created_By;
 	
+	private Date creation_Date;
+
+
+
 	
-	
+
+	public OfficerDTO(long department_ID, long office_ID, String officer_Name, String officer_Designation,
+			@Size(min = 10, max = 10, message = "Phone number must be 10 digits") String officer_PhoneNumber,
+			long officer_ID,
+			@Pattern(regexp = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$", message = "Invalid Email Address!!") String email,
+			@Size(min = 8, max = 20, message = "Password must contain 8-20 characters only") String password,
+			String created_By, Date creation_Date) {
+		super();
+		this.department_ID = department_ID;
+		this.office_ID = office_ID;
+		this.officer_Name = officer_Name;
+		this.officer_Designation = officer_Designation;
+		this.officer_PhoneNumber = officer_PhoneNumber;
+		this.officer_ID = officer_ID;
+		this.email = email;
+		this.password = password;
+		this.created_By = created_By;
+		this.creation_Date = creation_Date;
+	}
+
+	public Date getCreation_Date() {
+		return creation_Date;
+	}
+
+	public void setCreation_Date(Date creation_Date) {
+		this.creation_Date = creation_Date;
+	}
 
 	public String getEmail() {
 		return email;
@@ -116,38 +148,19 @@ public class OfficerDTO {
 	 * @param password
 	 * @param created_By
 	 */
-	public OfficerDTO(long department_ID, long office_ID, String officer_Name, String officer_Designation,
-			@Size(min = 10, max = 10, message = "Phone number must be 10 digits") String officer_PhoneNumber,
-			long officer_ID,
-			@Pattern(regexp = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$", message = "Invalid Email Address!!") String email,
-			@Size(min = 8, max = 20, message = "Password must contain 8-20 characters only") String password,
-			String created_By) {
-		super();
-		this.department_ID = department_ID;
-		this.office_ID = office_ID;
-		this.officer_Name = officer_Name;
-		this.officer_Designation = officer_Designation;
-		this.officer_PhoneNumber = officer_PhoneNumber;
-		this.officer_ID = officer_ID;
-		this.email = email;
-		this.password = password;
-		this.created_By = created_By;
-	}
-
+	
 	@Override
 	public String toString() {
 		return "OfficerDTO [department_ID=" + department_ID + ", office_ID=" + office_ID + ", officer_Name="
 				+ officer_Name + ", officer_Designation=" + officer_Designation + ", officer_PhoneNumber="
 				+ officer_PhoneNumber + ", officer_ID=" + officer_ID + ", email=" + email + ", password=" + password
-				+ ", created_By=" + created_By + "]";
+				+ ", created_By=" + created_By + ", creation_Date=" + creation_Date + "]";
 	}
 
 	public OfficerDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	
 	
 	
 	
